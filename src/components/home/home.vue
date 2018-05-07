@@ -101,7 +101,7 @@
 <style lang="scss">
   @import "home.scss";
   .active-container{
-    background: url("img/active-bg@2x.jpg") no-repeat top;
+    background: url("../../../static/img/active-bg@2x.jpg") no-repeat top;
     background-size: 100% auto;
   }
   .home-banner{

@@ -1,23 +1,25 @@
 <template>
-  <div class="cart">
-
+  <div class="login">
+    login page
   </div>
 </template>
 
 <script>
   export default {
-    name: "cart",
+    name: "login",
     data:function () {
       return{
 
       }
     },
-    mounted:function () {
-      this.$router.replace('login');
+    methods:{
+
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .login{
 
+  }
 </style>
