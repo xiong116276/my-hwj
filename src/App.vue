@@ -12,6 +12,8 @@
 
     }
   }
+
+
 </script>
 
 <style lang="scss">
@@ -57,6 +59,32 @@
     .weui-btn{
       font-size: 28px;
     }
+    /*swiper*/
+    .vux-slider{
+      >.vux-swiper{
+        > .vux-swiper-item{
+          >a{
+            >.vux-swiper-desc{
+              bottom: 0;
+              height: 80px;
+              font-size: 28px;
+            }
+          }
+        }
+      }
+      .vux-indicator{
+        a{
+          .vux-icon-dot{
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            &.active{
+              background-color: #ed4529;
+            }
+          }
+        }
+      }
+    }
   }
   /*loadings*/
   .weui-toast{
@@ -71,6 +99,14 @@
         width: 80px;
         height: 80px;
       }
+    }
+  }
+  /*popup*/
+  .vux-popup-show{
+    .vux-popup-header{
+      font-size: 30px;
+      height: 70px;
+      line-height: 70px;
     }
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="login-phone">
     <p>list模式下，默认高度为180px, 如果设置aspect-ratio会根据宽度自动计算高度</p>
-    <swiper :list="demo01_list" v-model="demo01_index" @on-index-change="demo01_onIndexChange"></swiper>
+    <swiper :list="demo01_list" auto loop dots-position="center" v-model="demo01_index" @on-index-change="demo01_onIndexChange"></swiper>
 
     <group >
       <x-switch title="switch" prevent-default v-model="value2" @on-click="switchFun"></x-switch>
@@ -48,7 +48,7 @@
     <div>
       <popup v-model="showPopup" height="40%">
         <div class="popup0">
-          <popup-header @on-click-left="show1 = false" @on-click-right="show1 = false"></popup-header>
+          <popup-header left-text="取消" right-text="确认" title="popup title" @on-click-left="showPopup = false" @on-click-right="showPopup = false"></popup-header>
           <group>
             <x-switch title="Another XSwitcher" v-model="showPopup"></x-switch>
             <x-switch title="Show Toast" prevent-default v-model="value2" @on-click="switchFun"></x-switch>
@@ -56,17 +56,19 @@
         </div>
       </popup>
     </div>
+    <div style="height: 500px"></div>
     <divider>我是有底线的</divider>
   </div>
 </template>
 
 <script>
-  import { Popup,Swiper,XSwitch,Icon,Divider,Loading,Group,Cell,Toast,XButton,XAddress,ChinaAddressV4Data } from 'vux';
+  import { Popup,PopupHeader,Swiper,XSwitch,Icon,Divider,Loading,Group,Cell,Toast,XButton,XAddress,ChinaAddressV4Data } from 'vux';
 
   export default {
     name: "vuxTest",
     components:{
       Popup,
+      PopupHeader,
       Swiper,
       XSwitch,
       Icon,
@@ -92,7 +94,7 @@
         value2: false,
         demo01_index: 0,
         demo01_list:[{
-          url: 'javascript:',
+          url: 'http://www.baidu.com',
           img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
           title: '送你一朵fua'
         }, {
@@ -101,9 +103,8 @@
           title: '送你一辆车'
         }, {
           url: 'javascript:',
-          img: 'https://static.vux.li/demo/5.jpg', // 404
-          title: '送你一次旅行',
-          fallbackImg: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg'
+          img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg',
+          title: '送你一次旅行'
         }],
         showPopup:false
       }
