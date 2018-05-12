@@ -6,6 +6,7 @@ import classify from '@/components/classify/classify';
 import cart from '@/components/cart/cart';
 import personal from '@/components/personal/personal';
 import login from '@/components/login/login';
+import vuxTest from '@/components/vuxTest/vuxTest';
 Vue.use(Router);
 
 export default new Router({
@@ -44,6 +45,11 @@ export default new Router({
       path:'/login',
       name:'login',
       component:login
+    },
+    {
+      path:'/vuxTest',
+      name:'vuxTest',
+      component:vuxTest
     }
   ]
 })

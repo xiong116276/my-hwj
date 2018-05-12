@@ -2,19 +2,19 @@
   <div id="app">
     <router-view/>
     <div class="footer-tab">
-      <router-link to="home" >
+      <router-link to="/home" >
         <span class="footer-icon icon-home"></span>
         <p>首页</p>
       </router-link>
-      <router-link to="classify">
+      <router-link to="/classify">
         <span class="footer-icon icon-classify"></span>
         <p>分类</p>
       </router-link>
-      <router-link to="cart">
+      <router-link to="/cart">
         <span class="footer-icon icon-cart"></span>
         <p>购物车</p>
       </router-link>
-      <router-link to="personal">
+      <router-link to="/personal">
         <span class="footer-icon icon-personal"></span>
         <p>个人</p>
       </router-link>
@@ -29,7 +29,6 @@
 </script>
 
 <style lang="scss">
-  @import "../../../static/scss/base";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

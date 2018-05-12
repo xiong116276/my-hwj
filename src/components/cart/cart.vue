@@ -13,7 +13,15 @@
       }
     },
     mounted:function () {
-      this.$router.replace('login');
+      this.checkLogin();
+    },
+    methods:{
+      checkLogin:function () {
+        if(sessionStorage.getItem('uname')==''||sessionStorage.getItem('uname')==undefined){
+          sessionStorage.setItem('replacePath',this.$route.name);
+          this.$router.replace('/login');
+        }
+      }
     }
   }
 </script>
