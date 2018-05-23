@@ -1,0 +1,333 @@
+@charset "utf-8";
+.vux-slider {
+  > .vux-swiper {
+    > .vux-swiper-item {
+      > a {
+        > .vux-swiper-desc {
+          background-image: none !important;
+        }
+      }
+    }
+  }
+}
+.detail{
+  position: relative;
+  padding-bottom: 100px;
+}
+.detail-banner{
+  position: relative;
+  .goods-type{
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+  }
+}
+.goods-content{
+  position: relative;
+  padding-top: 20px;
+  background-color: #fff;
+  font-size: 30px;
+  color: #2B2B2B;
+  .goods-name{
+    position: relative;
+    padding: 0 20px;
+    font-size: 36px;
+    line-height: 45px;
+    .ziying{
+      font-size: 24px;
+      padding: 0 8px;
+      background-color: #ed4529;
+      color: #fff;
+      border-radius: 8px;
+      margin-right: 10px;
+      vertical-align: top;
+    }
+  }
+  .goods-price{
+    padding: 20px;
+    border-bottom: 2px solid #c5c5c5;
+    .price{
+      float: left;
+      font-size: 35px;
+      color: #ed4529;
+      small{
+        font-size: 30px;
+      }
+    }
+    .marketPrice{
+      font-size: 30px;
+      color: #2B2B2B;
+      text-decoration: line-through;
+    }
+    .sales{
+      float: right;
+      font-size: 30px;
+    }
+  }
+  .goods-funcs{
+    padding: 20px;
+    .item{
+      position: relative;
+      padding-left: 190px;
+      margin-bottom: 20px;
+      .title{position: absolute;
+        top: 0;
+        left: 20px;
+        height: 100%;
+        font-size: 35px;
+      }
+      .content{
+        line-height: 38px;
+      }
+    }
+  }
+  .goods-ensure{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+    padding: 25px 15px;
+    .item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      img{
+        width: 50px;
+      }
+    }
+  }
+  .goods-discount{
+    border-bottom: 2px solid #c5c5c5;
+    background-color: #fff;
+    .title{
+      border-bottom: 2px solid #c5c5c5;
+      padding: 30px 0;
+      font-size: 35px;
+      span{
+        border-left: 8px solid #ed4529;
+        padding-left: 30px;
+      }
+    }
+    .content{
+      position: relative;
+      padding: 20px 20px 20px 100px;
+      .left{
+        position: absolute;
+        left: 20px;
+        top: 25px;
+      }
+      .right{
+        .item{
+          position: relative;
+          padding-left: 80px;
+          margin-bottom: 20px;
+          .icon{
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            border: 2px solid #ed4529;
+            color: #ed4529;
+            border-radius: 5px;
+            padding: 5px 6px;
+            font-size: 28px;
+            vertical-align: top;
+          }
+          .text{
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
+  .goods-spec{
+    border-top: 2px solid #c5c5c5;
+    .item{
+      border-bottom: 2px solid #c5c5c5;
+      td{
+        padding: 30px 20px;
+        line-height: 40px;
+      }
+      .title{
+        width: 200px;
+        border-right: 2px solid #c5c5c5;
+      }
+    }
+  }
+  .goods-img-show{
+    img{
+      vertical-align: top;
+    }
+  }
+  //vux popup 样式
+  .vux-popup-dialog{
+    overflow-y: unset!important;
+    background-color: #fff !important;
+  }
+}
+
+.goods-footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 750px;
+  height: 90px;
+  background-color: #ffffff;
+  border-top: 2px solid #c5c5c5;
+  .left{
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    .item{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      float: left;
+      font-size: 22px;
+
+      &:not(:last-child){
+        border-right: 2px solid #c5c5c5;
+      }
+      .icon{
+        font-size: 40px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .right{
+    width: 50%;
+    float: right;
+    >div{
+      float: left;
+      width: 50%;
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      color: #fff;
+      &:not(:last-child){
+        border-right: 2px solid #fff;
+      }
+    }
+    .btn-add-cart{
+      background: url("http://m.360hwj.com/images/detail/join-cart-icon@2x.png") no-repeat center;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+    .btn-buy{
+      background: url("http://m.360hwj.com/images/detail/buy-icon@2x.png") no-repeat center;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.goods-popup{
+  padding-bottom: 90px;
+  .top{
+    position: relative;
+    border-bottom: 2px solid #c5c5c5;
+    height: 180px;
+  }
+  .item-popup-img{
+    position: absolute;
+    top: -90px;
+    width: 200px;
+    left: 50px;
+  }
+  .item-popup-text{
+    padding: 30px 30px 0 290px;
+    font-size: 35px;
+    .name{
+      line-height: 45px;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp:2;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: normal;
+    }
+    .price{
+      position: absolute;
+      bottom: 20px;
+      color: #ed4529;
+      small{
+        font-size: 28px;
+      }
+    }
+  }
+  .middle{
+    padding: 30px;
+    height: 350px;
+    overflow-y: auto;
+    .item{
+      margin-bottom: 20px;
+    }
+    .title{
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+    .guige{
+      .item{
+        display: inline-block;
+        border: 2px solid #aaa;
+        padding: 10px 15px;
+        border-radius: 5px;
+        float: left;
+        margin-right: 20px;
+        &.active{
+          border-color: #ed4529;
+          color: #ed4529;
+        }
+      }
+    }
+    .count-edit{
+      width: 250px;
+      border: 2px solid #9c9c9c;
+      line-height: 60px;
+      border-radius: 5px;
+      overflow: hidden;
+      .btn{
+        float: left;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        color: #000;
+      }
+      input{
+        float: left;
+        width: 120px;
+        height: 61px;
+        text-align: center;
+        outline: none;
+        border: 2px solid #9c9c9c {
+          top: none;
+          bottom: none;
+        };
+      }
+    }
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    color: #fff;
+    background-color: #ed4529;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 5px;
+  }
+}
+
+
+
+
+

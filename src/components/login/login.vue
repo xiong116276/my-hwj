@@ -13,8 +13,8 @@
     <div class="login-bottom">
       <p class="login-widget clearFix">
         <router-link to="/loginPhone">手机登录</router-link>
-        <router-link to="/loginPhone">忘记密码?</router-link></p>
-      <p class="btn-register">没有账号?<router-link to="/loginPhone"> 立即注册</router-link></p>
+        <router-link to="/forgetPassword">忘记密码?</router-link></p>
+      <p class="btn-register">没有账号?<router-link to="/register"> 立即注册</router-link></p>
     </div>
   </div>
 </template>
@@ -45,8 +45,8 @@
         event.preventDefault();
         let e = event.target;
         if(e.className.indexOf('active')>-1){
-          sessionStorage.setItem('uname',this.loginName);
-          this.$router.push(sessionStorage.getItem('replacePath'));
+          this.$router.push('/personal');
+          sessionStorage.setItem('uname',this.loginName)
         }
       }
     }
@@ -54,5 +54,5 @@
 </script>
 
 <style lang="scss">
-  @import "login";
+
 </style>

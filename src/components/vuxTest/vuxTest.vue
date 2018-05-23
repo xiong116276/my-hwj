@@ -56,17 +56,37 @@
         </div>
       </popup>
     </div>
+    <!--表单验证插件-->
+    <div>
+      <form>
+        <group>
+          <label class="label">Email</label>
+          <p :class="{ 'control': true }">
+            <input v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="请输入Email">
+            <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+          </p>
+        </group>
+        <group>
+          <label class="label">账号</label>
+          <p :class="{ 'control': true }">
+            <input v-validate="'required|name'" :class="{'input': true, 'is-danger': errors.has('name') }" name="name" type="text" placeholder="请输入账号">
+            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+          </p>
+        </group>
+      </form>
+    </div>
     <div style="height: 500px"></div>
     <divider>我是有底线的</divider>
   </div>
 </template>
 
 <script>
-  import { Popup,PopupHeader,Swiper,XSwitch,Icon,Divider,Loading,Group,Cell,Toast,XButton,XAddress,ChinaAddressV4Data } from 'vux';
+  import { XInput,Popup,PopupHeader,Swiper,XSwitch,Icon,Divider,Loading,Group,Cell,Toast,XButton,XAddress,ChinaAddressV4Data } from 'vux';
 
   export default {
     name: "vuxTest",
     components:{
+      XInput,
       Popup,
       PopupHeader,
       Swiper,
@@ -106,12 +126,13 @@
           img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg',
           title: '送你一次旅行'
         }],
-        showPopup:false
+        showPopup:false,
+        valueInput:''
       }
     },
     created :function() {
       this.$ajax.get('/api/get-news.php')
-        .then(({data}) => {
+        .then((data) => {
           console.log(data)
         })
         .catch((error) =>{
@@ -144,6 +165,7 @@
         this.$vux.toast.show({
           text:'success',
           type:'success',
+          isShowMask:true
         })
       },
       showLoading () {
@@ -159,12 +181,14 @@
         if(this.value2){
           this.$vux.toast.show({
             text: 'switch on',
-            type: 'success'
+            type: 'success',
+            isShowMask:true
           });
         }else{
           this.$vux.toast.show({
             text: 'switch off',
-            type: 'warn'
+            type: 'warn',
+            isShowMask:true
           });
         }
         setTimeout(() => {
@@ -179,5 +203,18 @@
   .popup0 {
     padding-bottom:15px;
     height:200px;
+  }
+  .control{
+    font-size: 28px;
+    padding: 0 30px;
+    input{
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      outline: none;
+    }
+  }
+  .is-danger{
+    color: #ed4529;
   }
 </style>

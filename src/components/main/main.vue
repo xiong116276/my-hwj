@@ -30,7 +30,7 @@
 
 <style lang="scss">
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -86,6 +86,7 @@
       height: 90px;
       text-align: center;
       padding-top: 15px;
+      font-size: 22px;
       &.router-link-active{
         color: #ed4529;
         .icon-home{

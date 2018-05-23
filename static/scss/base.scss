@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import "reset";
 @import "mixins";
+@import "iconfont";
 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-aspect-ratio){
   .border-1px{
     &::after{
@@ -18,10 +19,15 @@
     }
   }
 }
+@font-face {
+  font-family: 'PingFang';
+  src: url("/static/font/PingFang Light.ttf");
+}
 html{
   overflow-x: hidden;
 }
 body{
+  font-family: PingFang,apple-system-font,Helvetica Neue,sans-serif;
   overflow-x: hidden;
   width: 100%;
   max-width: 750px;
@@ -31,3 +37,215 @@ body{
 input[type=search]::-webkit-search-cancel-button{
   -webkit-appearance: none;//此处只是去掉默认的小×
 }
+/*vux css reset start*/
+.main{
+  font-size: 28px;
+
+  .weui-cells{
+    .weui-cell{
+      font-size: 28px;
+    }
+  }
+  /*switch 按钮*/
+  .weui-cell_switch{
+    .weui-switch{
+      width: 100px;
+      height: 50px;
+      border-radius: 25px;
+      &:checked{
+        &:after{
+          transform: translateX(50px);
+        }
+      }
+      &:before{
+        width: 95px;
+        height: 45px;
+        border-radius: 50px;
+      }
+      &:after{
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        top:0;
+      }
+    }
+    .vux-x-switch-overlay{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  /*btns*/
+  .weui-btn{
+    font-size: 28px;
+  }
+  /*swiper*/
+  .vux-slider{
+    >.vux-swiper{
+      > .vux-swiper-item{
+        >a{
+          >.vux-swiper-desc{
+            bottom: 0;
+            height: 80px;
+            font-size: 28px;
+          }
+        }
+      }
+    }
+    .vux-indicator{
+      a{
+        .vux-icon-dot{
+          border-radius: 100%;
+          &.active{
+            background-color: #ed4529;
+          }
+        }
+      }
+    }
+  }
+}
+/*loadings*/
+.weui-toast{
+  padding: 10px 40px;
+  .weui-toast__content{
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .weui-icon_toast{
+    &:before{
+      font-size: 100px;
+    }
+    &.weui-loading{
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+/*popup*/
+.vux-popup-show{
+  .vux-popup-header{
+    font-size: 30px;
+    height: 70px;
+    line-height: 70px;
+  }
+}
+
+/*vux css reset  end*/
+//登录input样式
+.login{
+  position: fixed;
+  top:0;
+  bottom:0;
+  width: 100%;
+  max-width: 750px;
+  background: #fff url("/static/img/login-bg.png") no-repeat top;
+  background-size: 100% auto;
+  .login-widget{
+    width: 80%;
+    margin: 0 auto;
+    a{
+      float: left;
+      width: 50%;
+      text-align: center;
+      font-size: 28px;
+      color: #505050;
+    }
+  }
+  .btn-register{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 28px;
+    color: #505050;
+    a{
+      color: #ed4529;
+    }
+  }
+}
+.login-content{
+  padding-top: 120px;
+  .get-code{
+    position: absolute;
+    color: #ed4529;
+    right:20px;
+    bottom:25px;
+    font-size: 28px;
+  }
+}
+.btn-login{
+  width: 80%;
+  margin: 110px auto 60px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  background-color: rgb(156, 156, 156);
+  color: #fff;
+  font-size: 32px;
+  &.active{
+    background-color: #ed4529;
+  }
+}
+.login-input{
+  position:relative;
+  width: 80%;
+  margin: 80px auto 0;
+  font-size: 32px;
+  input{
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 25px;
+  }
+}
+
+//右箭头
+.icon-arrow-right{
+  display: inline-block;
+  width: 20px;
+  height: 100%;
+  background: url("http://m.360hwj.com/images/order-right.png") no-repeat center;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.icon-select{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: url("http://m.360hwj.com/images/icon-select-false.png") no-repeat center;
+  -webkit-background-size: contain;
+  background-size: contain;
+
+  &.selected{
+    background-image: url("http://m.360hwj.com/images/icon-select-true.png");
+  }
+}
+//推荐列表title
+.floor-title{
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #e8e8e8;
+  .title-img{
+    width: 30%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
