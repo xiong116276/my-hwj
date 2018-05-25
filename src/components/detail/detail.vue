@@ -71,7 +71,12 @@
           <div class="btn-buy border-1px" @click="popup($event)">立即购买</div>
         </div>
       </div>
-
+      <div class="detail-btn-search">
+        <img :src="iconSearch" alt="" @click="btnSearch">
+        <div class="search-content" :class="{active:isSearch}">
+          <input type="search" v-model="searchContent" placeholder="搜索商品">
+        </div>
+      </div>
       <popup class="goods-popup" v-model="showPopup">
         <div class="top border-1px">
           <div class="item-popup-img">
@@ -106,7 +111,7 @@
 
 <script>
   import {Swiper,Popup} from 'vux';
-  import recommond from '@/components/home/product_list/product_list';
+  import recommond from '@/components/product_list/product_list';
   export default {
     name: "detail",
     components: {
@@ -388,7 +393,10 @@
         },
         showPopup:false,
         goodsCount:1,
-        popupBottomText:'加入购物车'
+        popupBottomText:'加入购物车',
+        iconSearch:'http://m.360hwj.com/images/search/search-active-white.png',
+        searchContent:'',
+        isSearch:false
       }
     },
     mounted: function () {
@@ -397,12 +405,6 @@
       document.documentElement.scrollTop = 0;
       this.dots('vux-icon-dot', 8);
       this.border1px();
-    },
-    watch:{
-
-    },
-    computed:{
-
     },
     methods: {
       onIndexChange: function (index) {
@@ -461,6 +463,9 @@
           });
           this.goodsCount = this.goodsDetail.stock;
         }
+      },
+      btnSearch:function(){
+        this.isSearch = this.isSearch?false:true;
       }
     }
   }

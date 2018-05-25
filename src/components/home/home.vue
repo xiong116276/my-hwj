@@ -51,7 +51,7 @@
   import welfare from './welfare/welfare';
   import home_classify from './home_classify/home_classify';
   import brand from './brand/brand';
-  import product_list from './product_list/product_list';
+  import product_list from '../product_list/product_list';
   import download from './download/download';
 
   export default {

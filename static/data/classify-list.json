@@ -6,22 +6,27 @@
         "title":"感冒清热",
         "goods":[
           {
+            "id":1,
             "img":"http://static.360hwj.com/group1/M00/01/F7/J2zAA1lwB4OALPPIAACLpJ2unBk380.jpg",
             "text":"感冒解表"
           },
           {
+            "id":2,
             "img":"http://static.360hwj.com/group1/M00/01/F7/J2zAA1lwB7eAKJn8AACYowzFVq4756.jpg",
             "text":"支气管炎/咳嗽支气管炎/咳嗽支气管炎/咳嗽"
           },
           {
+            "id":3,
             "img":"http://static.360hwj.com/group1/M00/01/F7/J2zAA1lwB-SAHRSVAAB3hlig6-Q130.jpg",
             "text":"解热镇痛"
           },
           {
+            "id":4,
             "img":"http://static.360hwj.com/group1/M00/01/F7/J2zAA1lwCCaARyFPAABwWzJMOZ0363.jpg",
             "text":"清热解毒"
           },
           {
+            "id":5,
             "img":"http://static.360hwj.com/group1/M00/01/F7/J2zAA1lwCFGAFRKdAABYLpkwNqI496.jpg",
             "text":"咽喉炎"
           }

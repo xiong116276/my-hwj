@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import recommend from '../home/product_list/product_list';
+  import recommend from '../product_list/product_list';
   export default {
     name: "cart",
     components:{recommend},
@@ -181,7 +181,7 @@
     methods:{
       checkLogin:function () {
         if(sessionStorage.getItem('uname') == ''||sessionStorage.getItem('uname')==undefined){
-          // sessionStorage.setItem('replacePath',this.$route.name);
+          sessionStorage.setItem('replacePath',this.$route.name);
           this.$router.replace('/login');
         }
       },

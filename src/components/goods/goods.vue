@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" v-if="goodsData" @click="detail(goodsData)">
-    <div class="item-img"><img :src="goodsData.img" alt=""></div>
+    <div class="item-img"><img v-lazy="goodsData.img" alt=""></div>
     <p class="item-name">{{goodsData.name}}</p>
     <p class="item-price">￥{{goodsData.price}}</p>
   </div>

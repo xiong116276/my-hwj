@@ -45,7 +45,7 @@
         event.preventDefault();
         let e = event.target;
         if(e.className.indexOf('active')>-1){
-          this.$router.push('/personal');
+          this.$router.push(sessionStorage.getItem('replacePath'));
           sessionStorage.setItem('uname',this.loginName)
         }
       }

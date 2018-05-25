@@ -6,6 +6,8 @@ import classify from '@/components/classify/classify';
 import cart from '@/components/cart/cart';
 import personal from '@/components/personal/personal';
 import detail from '@/components/detail/detail';
+import category from '@/components/category/category';
+import classifyThree from '@/components/classify-three/classify-three';
 // 登录注册
 import login from '@/components/login/login';
 import loginPhone from '@/components/loginphone/loginphone';
@@ -83,6 +85,16 @@ export default new Router({
       path:'/detail/:id',
       name: 'detail',
       component:detail
+    },
+    {
+      path:'/category/:id',
+      name: 'category',
+      component:category
+    },
+    {
+      path:'/classifyThree/:id',
+      name: 'classifyThree',
+      component:classifyThree
     },
     {
       path:'/vuxTest',

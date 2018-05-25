@@ -11,8 +11,8 @@
       <div class="item" v-for="(item,index) in classifyTwo">
         <div class="item-title">{{item.title}}</div>
         <div class="item-goods clearFix">
-          <div class="goods" v-for="goods in item.goods">
-            <div class="goods-img"><img :src="goods.img" alt=""></div>
+          <div class="goods" v-for="goods in item.goods" @click="classifyThree(goods)">
+            <div class="goods-img"><img v-lazy="goods.img" alt=""></div>
             <p class="goods-text">{{goods.text}}</p>
           </div>
         </div>
@@ -48,6 +48,9 @@
         this.num = index;
         this.classifyTwo = this.classifyData[index].classifyTwo;
         document.getElementsByClassName('goods-content')[0].scrollTop=0;
+      },
+      classifyThree(goods){
+        this.$router.push('/classifyThree/'+goods.id);
       }
     }
   }
