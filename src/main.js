@@ -74,6 +74,11 @@ Vue.prototype.children = function(fel,cel){
     return children;
   }
 };
+//返回顶部
+Vue.prototype.backTop = function(){
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+};
 /* eslint-disable no-new */
 const app = new Vue({
   el: '#app',

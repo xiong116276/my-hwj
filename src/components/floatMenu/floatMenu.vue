@@ -35,7 +35,7 @@
 <style lang="scss">
   .btn-menu-filter{
     position: fixed;
-    bottom: 15%;
+    bottom: 20%;
     right: 50px;
     background-color: #ed4529;
     width: 100px;

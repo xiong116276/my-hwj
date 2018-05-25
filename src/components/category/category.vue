@@ -26,6 +26,7 @@
       }
     },
     mounted(){
+      this.backTop();
       if(this.dataList.length <= 0){
         this.$ajax.get('/api/classify-list.json')
           .then((response)=>{
