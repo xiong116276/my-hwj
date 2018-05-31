@@ -8,6 +8,8 @@ import personal from '@/components/personal/personal';
 import detail from '@/components/detail/detail';
 import category from '@/components/category/category';
 import classifyThree from '@/components/classify-three/classify-three';
+import self_medicine from '@/components/self_medicine/self_medicine';
+import self_result from '@/components/self_result/self_result';
 // 登录注册
 import login from '@/components/login/login';
 import loginPhone from '@/components/loginphone/loginphone';
@@ -95,6 +97,16 @@ export default new Router({
       path:'/classifyThree/:id',
       name: 'classifyThree',
       component:classifyThree
+    },
+    {
+      path:'/self_medicine',
+      name:'self_medicine',
+      component:self_medicine
+    },
+    {
+      path:'/self_result/:id',
+      name:'self_result',
+      component:self_result
     },
     {
       path:'/vuxTest',

@@ -1,8 +1,8 @@
 <template>
   <div class="home-menu">
-    <a v-for="(item,index) in menus" class="item" :href="item.href">
+    <router-link v-for="(item,index) in menus" class="item" :to="item.href" :key="index">
       <img class="menu-img" :src="item.img"  alt=""><p class="item-text">{{item.text}}</p>
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -13,12 +13,12 @@
       return{
         menus:[
           {
-            href:'http://m.360hwj.com/shop/categories2',
+            href:'/classify',
             img:'http://m.360hwj.com/images/0425/home_icon_clas@2x.png',
             text:'全部分类'
           },
           {
-            href:'http://m.360hwj.com/disease/index',
+            href:'/self_medicine',
             img:'http://m.360hwj.com/images/0425/home_icon_ser@2x.png',
             text:'自助找药'
           },

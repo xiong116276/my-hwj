@@ -1,0 +1,723 @@
+<template>
+  <div class="self-medicine">
+    <div class="tab-title">
+      <span v-for="(item,index) in tabs" class="tab-item" :class="{active:num === index}" @click="selected(index)">{{item.text}}</span>
+    </div>
+    <div class="tab-content">
+      <div v-if="partContent" class="part-content">
+        <a class="part-item" v-for="item in parts" @click="show(item)">{{item.text}}</a>
+        <popup v-model="showPopup" height="40%" :show-mask="false">
+          <popup-header left-text=" " right-text="取消" :title="popup.title" @on-click-right="showPopup = false"></popup-header>
+          <div class="part-list">
+            <a class="item border-1px" v-for="(item,index) in popup.data" :key="index" @click="result(item)">{{item.text}}</a>
+          </div>
+        </popup>
+      </div>
+      <div v-else class="department-content">
+        <classify :enterData="departments"/>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import {Popup,PopupHeader} from 'vux';
+  import classify from '@/components/classify/classify';
+  export default {
+    name: "self_medicine",
+    components:{
+      Popup,
+      PopupHeader,
+      classify
+    },
+    data(){
+      return{
+        partContent:true,
+        num:0,
+        tabs:[
+          {
+            text:'按部位'
+          },
+          {
+            text:'按科室'
+          }
+        ],
+        showPopup:false,
+        popup:{
+          title:'',
+          data:[]
+        },
+        parts:[
+          {
+            text:'神经血液系统',
+            classifyTwo:[
+              {
+                text:'神经痛',
+                id: '000',
+              },
+              {
+                text:'血压异常',
+                id: '001',
+              },
+              {
+                text:'血糖异常',
+                id: '002',
+              },
+              {
+                text:'补益调节',
+                id: '003',
+              },
+              {
+                text:'睡眠障碍',
+                id: '004',
+              },
+              {
+                text:'体温异常',
+                id: '005',
+              },
+              {
+                text:'高血脂',
+                id: '006',
+              },
+              {
+                text: '其它',
+                id: '007',
+              }
+            ]
+          },
+          {
+            text:'头部',
+            "classifyTwo":[
+              {
+                text:'头痛头疼',
+                id: '010'
+              },
+              {
+                text:'头晕头昏',
+                id: '011'
+              },
+              {
+                text:'脱发白发',
+                id: '012'
+              },
+              {
+                text:'脑部疾病',
+                id: '013'
+              }
+            ]
+          },
+          {
+            text:'眼睛',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '020',
+              },
+              {
+                text:'红眼痛痒',
+                id: '021',
+              },
+              {
+                text:'麦粒肿',
+                id: '022',
+              },
+              {
+                text:'飞蚊症',
+                id: '023',
+              }
+            ]
+          },
+          {
+            text:'颈肩部',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '030',
+              },
+              {
+                text:'红眼痛痒',
+                id: '031',
+              },
+              {
+                text:'麦粒肿',
+                id: '032',
+              },
+              {
+                text:'飞蚊症',
+                id: '033',
+              }
+            ]
+          },
+          {
+            text:'鼻子',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '040',
+              },
+              {
+                text:'红眼痛痒',
+                id: '041',
+              },
+              {
+                text:'麦粒肿',
+                id: '042',
+              },
+              {
+                text:'飞蚊症',
+                id: '043',
+              }
+            ]
+          },
+          {
+            text:'口咽部',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '050',
+              },
+              {
+                text:'红眼痛痒',
+                id: '051',
+              },
+              {
+                text:'麦粒肿',
+                id: '052',
+              },
+              {
+                text:'飞蚊症',
+                id: '053',
+              }
+            ]
+          },
+          {
+            text:'耳朵',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '060',
+              },
+              {
+                text:'红眼痛痒',
+                id: '061',
+              },
+              {
+                text:'麦粒肿',
+                id: '062',
+              },
+              {
+                text:'飞蚊症',
+                id: '063',
+              }
+            ]
+          },
+          {
+            text:'胸部',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '070',
+              },
+              {
+                text:'红眼痛痒',
+                id: '071',
+              },
+              {
+                text:'麦粒肿',
+                id: '072',
+              },
+              {
+                text:'飞蚊症',
+                id: '073',
+              }
+            ]
+          },
+          {
+            text:'腹部',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '080',
+              },
+              {
+                text:'红眼痛痒',
+                id: '081',
+              },
+              {
+                text:'麦粒肿',
+                id: '082',
+              },
+              {
+                text:'飞蚊症',
+                id: '083',
+              }
+            ]
+          },
+          {
+            text:'四肢',
+            classifyTwo:[
+              {
+                text:'屈光不正',
+                id: '090',
+              },
+              {
+                text:'红眼痛痒',
+                id: '091',
+              },
+              {
+                text:'麦粒肿',
+                id: '092',
+              },
+              {
+                text:'飞蚊症',
+                id: '093',
+              }
+            ]
+          },
+          {
+            text:'生殖、肛部'
+          },
+          {
+            text:'皮肤'
+          }
+        ],//部位列表
+        departments:[
+          {
+            "title":"内科",
+            "classifyTwo":[
+              {
+                "title":"呼吸内科",
+                "goods":[
+                  {
+                    "id":1000,
+                    "text":"哮喘"
+                  },
+                  {
+                    "id":1001,
+                    "text":"支气管炎"
+                  },
+                  {
+                    "id":1002,
+                    "text":"流行性感冒"
+                  },
+                  {
+                    "id":1003,
+                    "text":"感冒"
+                  },
+                  {
+                    "id":1004,
+                    "text":"肺炎"
+                  }
+                ]
+              },
+              {
+                "title":"肾内科",
+                "goods":[
+                  {
+                    "text":"肾病",
+                    "id":1010
+                  },
+                  {
+                    "text":"肾炎",
+                    "id":1011
+                  },
+                  {
+                    "text":"肾盂肾炎",
+                    "id":1012
+                  },
+                  {
+                    "text":"肾功能衰竭",
+                    "id":1013
+                  },
+                  {
+                    "text":"狼疮性肾炎",
+                    "id":1014
+                  },
+                  {
+                    "text":"尿毒症",
+                    "id":1015
+                  }
+                ]
+              },
+              {
+                "title":"心脑血管",
+                "goods":[
+                  {
+                    "text":"心绞痛"
+                  },
+                  {
+                    "text":"血压异常"
+                  },
+                  {
+                    "text":"血脂异常"
+                  },
+                  {
+                    "text":"脑血管疾病"
+                  },
+                  {
+                    "text":"心血管疾病"
+                  }
+                ]
+              },
+              {
+                "title":"儿科用药",
+                "goods":[
+                  {
+                    "text":"小儿腹泻腹痛"
+                  },
+                  {
+                    "text":"小儿感冒退热"
+                  },
+                  {
+                    "text":"小儿止咳化痰"
+                  },
+                  {
+                    "text":"小儿清热解毒"
+                  },
+                  {
+                    "text":"小儿咽喉炎"
+                  },
+                  {
+                    "text":"小儿驱虫化积"
+                  },
+                  {
+                    "text":"小儿健脾消食"
+                  },
+                  {
+                    "text":"维生素矿物质"
+                  },
+                  {
+                    "text":"其它补益"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"外科",
+            "classifyTwo":[
+              {
+                "title":"普外科",
+                "goods":[
+                  {
+                    "text":"验孕排卵"
+                  },
+                  {
+                    "text":"卫生耗材"
+                  },
+                  {
+                    "text":"血糖试纸"
+                  },
+                  {
+                    "text":"家庭常备"
+                  },
+                  {
+                    "text":"辅助器材"
+                  }
+                ]
+              },
+              {
+                "title":"品牌分类",
+                "goods":[
+                  {
+                    "text":"验孕排卵"
+                  },
+                  {
+                    "text":"卫生耗材"
+                  },
+                  {
+                    "text":"血糖试纸"
+                  },
+                  {
+                    "text":"家庭常备"
+                  },
+                  {
+                    "text":"辅助器材"
+                  }
+                ]
+              },
+              {
+                "title":"血压计",
+                "goods":[
+                  {
+                    "text":"验孕排卵"
+                  },
+                  {
+                    "text":"卫生耗材"
+                  },
+                  {
+                    "text":"血糖试纸"
+                  },
+                  {
+                    "text":"家庭常备"
+                  },
+                  {
+                    "text":"辅助器材"
+                  }
+                ]
+              },
+              {
+                "title":"体温计",
+                "goods":[
+                  {
+                    "text":"验孕排卵"
+                  },
+                  {
+                    "text":"卫生耗材"
+                  },
+                  {
+                    "text":"血糖试纸"
+                  },
+                  {
+                    "text":"家庭常备"
+                  },
+                  {
+                    "text":"辅助器材"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"肝胆科",
+            "classifyTwo":[
+              {
+                "title":"肝胆科",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"男科",
+            "classifyTwo":[
+              {
+                "title":"男科疾病",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"妇产科",
+            "classifyTwo":[
+              {
+                "title":"妇科",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"儿科",
+            "classifyTwo":[
+              {
+                "title":"小儿科疾病",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"皮肤性病",
+            "classifyTwo":[
+              {
+                "title":"皮肤科",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"心理精神",
+            "classifyTwo":[
+              {
+                "title":"心理健康",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"五官科",
+            "classifyTwo":[
+              {
+                "title":"耳鼻喉科",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              },
+              {
+                "title":"眼科",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title":"检查科",
+            "classifyTwo":[
+              {
+                "title":"体检",
+                "goods":[
+                  {
+                    "text":"感冒解表"
+                  },
+                  {
+                    "text":"支气管炎/咳嗽"
+                  },
+                  {
+                    "text":"解热镇痛"
+                  },
+                  {
+                    "text":"清热解毒"
+                  },
+                  {
+                    "text":"咽喉炎"
+                  }
+                ]
+              }
+            ]
+          }
+        ],//科室列表
+      }
+    },
+    methods:{
+      selected(index){
+        this.num = index;
+        this.partContent = this.num === 0?true:false;
+      },
+      show(item){
+        this.showPopup = true;
+        this.popup.title = item.text;
+        this.popup.data = item.classifyTwo;
+      },
+      result(item){
+        this.$router.push('/self_result/'+item.id);
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  @import "./self_medicine";
+</style>

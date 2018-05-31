@@ -12,7 +12,7 @@
         <div class="item-title">{{item.title}}</div>
         <div class="item-goods clearFix">
           <div class="goods" v-for="goods in item.goods" @click="classifyThree(goods)">
-            <div class="goods-img"><img v-lazy="goods.img" alt=""></div>
+            <div class="goods-img" v-if="goods.img"><img v-lazy="goods.img" alt=""></div>
             <p class="goods-text">{{goods.text}}</p>
           </div>
         </div>
@@ -26,6 +26,9 @@
   // let serverUrl = 'http://xiongkun.top/data';
   export default {
     name: "classify",
+    props:{
+      enterData:{type:Array}
+    },
     data:function () {
       return{
         classifyData:[],
@@ -34,14 +37,19 @@
       }
     },
     mounted:function () {
-      this.$ajax.get(serverUrl+'/classify-list.json')
-        .then((response)=>{
-          this.classifyData = response.data;
-          this.classifyTwo = this.classifyData[0].classifyTwo;
-        })
-        .catch((response)=>{
-          console.log(response)
-        });
+      if(this.enterData === undefined){
+        this.$ajax.get(serverUrl+'/classify-list.json')
+          .then((response)=>{
+            this.classifyData = response.data;
+            this.classifyTwo = this.classifyData[0].classifyTwo;
+          })
+          .catch((response)=>{
+            console.log(response)
+          });
+      }else{
+        this.classifyData = this.enterData;
+        this.classifyTwo = this.enterData[0].classifyTwo;
+      }
     },
     methods:{
       selected:function (index) {
@@ -50,7 +58,11 @@
         document.getElementsByClassName('goods-content')[0].scrollTop=0;
       },
       classifyThree(goods){
-        this.$router.push('/classifyThree/'+goods.id);
+        if(this.enterData === undefined){
+          this.$router.push('/classifyThree/'+goods.id);
+        }else{
+          this.$router.push('/self_result/'+goods.id);
+        }
       }
     }
   }

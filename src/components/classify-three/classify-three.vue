@@ -1,6 +1,6 @@
 <template>
   <div class="classify-three">
-    <div class="top clearFix">
+    <div v-if="topData" class="top clearFix">
       <div v-for="(item,index) in topData" class="sort-item" @click="sort(item,index)">
         {{item.text}}
         <img v-if="item.isSort" class="img" :src="[item.iconType===0?iconSort.default:item.iconType===1?iconSort.top_bottom:iconSort.bottom_top]" alt="">
@@ -10,6 +10,7 @@
     <productList :listData="data"/>
     <floatMenu/>
     <back_top/>
+    <filter_popup :popupData="popupData" :showPopup="showPopup" @finish="filter_finish"/>
   </div>
 </template>
 
@@ -17,13 +18,15 @@
   import productList from '@/components/product_list/product_list';
   import floatMenu from '@/components/floatMenu/floatMenu';
   import back_top from '@/components/backTop/backTop';
+  import filter_popup from '@/components/filter_popup/filter_popup';
 
   export default {
     name: "classify-three",
     components:{
       productList,
       floatMenu,
-      back_top
+      back_top,
+      filter_popup
     },
     data(){
       return{
@@ -230,7 +233,309 @@
             ]
           }
         ],
-        data:[]
+        data:[],
+        showPopup:false,
+        popupData:[
+          {
+            title:'品牌',
+            content:[
+              {
+                text:'抚河',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              },
+              {
+                text:'四方箅',
+                isSelected:false
+              },
+              {
+                text:'绿婷牌',
+                isSelected:false
+              },
+              {
+                text:'神华维康',
+                isSelected:false
+              },
+              {
+                text:'九芝堂',
+                isSelected:false
+              },
+              {
+                text:'力合健',
+                isSelected:false
+              },
+              {
+                text:'999',
+                isSelected:false
+              }
+            ],
+            contentShow:false,
+            isClick:true
+          },
+          {
+            title:'类型',
+            content:[
+              {
+                text:'处方药',
+                isSelected:false
+              },
+              {
+                text:'非处方药',
+                isSelected:false
+              }
+            ],
+            contentShow:true,
+            isClick:true
+          },
+          {
+            title:'价格区间',
+            content:{
+              price_l:'',
+              price_g:''
+            },
+            contentShow:true,
+            isInput:true
+          }
+        ]
       }
     },
     mounted(){
@@ -250,8 +555,12 @@
             case 2:item.iconType =0;break;
           }
         }else{
-
+          this.showPopup = true;
         }
+      },
+      filter_finish(data){
+        this.showPopup = false ;
+        console.log(data)
       }
     }
   }
@@ -283,4 +592,77 @@
       }
     }
   }
+  #filter_popup{
+    .vux-popup-header{
+      background-color: #fff;
+      .vux-popup-header-right{
+        color: #ed4529;
+      }
+    }
+    //vux popup 样式
+    .vux-popup-dialog{
+      overflow-y: auto!important;
+    }
+    .popup{
+      padding-top: 80px;
+    }
+    .popup-header{
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      line-height: 80px;
+      z-index: 50;
+    }
+    .filter-content {
+      padding: 0 20px 50px;
+      background-color: #fff;
+      .filter-item{
+        .title{
+          position: relative;
+          height: 80px;
+          line-height: 80px;
+        }
+        .content{
+          padding-bottom: 20px;
+          .brand{
+            float: left;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            margin: 0 20px 20px 0;
+            border-radius: 5px;
+            &.active{
+              background-color: #ed4529;
+              color: #fff;
+            }
+          }
+          input{
+            text-align: center;
+            outline: none;
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+          }
+          .space{
+            margin: 0 20px;
+          }
+        }
+      }
+      .icon-arrow-down{
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 30px;
+        width: 50px;
+        height: 40px;
+        transition: transform 0.2s linear;
+        &.rotate{
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
 </style>
